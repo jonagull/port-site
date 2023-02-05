@@ -4,6 +4,7 @@ html {
     font-family: "Roboto", sans-serif;
 }
 
+/* #ffc45e */
 /* #f74f3c */
 
 /* html div {
@@ -22,7 +23,6 @@ hr {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    /* border: 2px solid #f74f3c; */
     border: 2px solid white;
 }
 
@@ -47,39 +47,36 @@ hr {
     padding: 0 3%;
 }
 
+.hero__container h5 {
+    color: #ffc45e;
+    margin-left: 122px;
+    margin-bottom: 20px;
+    letter-spacing: 8px;
+}
+
 .hero__container h1 {
     font-size: 60px;
     margin: 0;
     line-height: 51px;
 }
 
-/* .hero__container p {
-    padding: 0 32%;
-} */
+.hero__container p {
+    /* padding: 0 32%; */
+    width: 300px;
+}
 
 .hero__image {
     width: 60%;
     height: 600px;
 }
 
-#toc_container {
-    margin-left: 10%;
-    background: #fe5942 none repeat scroll 0 0;
-    border: 1px solid white;
-    display: table;
-    font-size: 95%;
-    margin-bottom: 1em;
-    padding: 20px;
-    width: auto;
-}
-
-.toc_title {
-    font-weight: 700;
-    text-align: center;
-}
-
-#toc_container li,
-#toc_container ul,
-#toc_container ul li {
-    list-style: outside none none !important;
+.hero__button {
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    background-color: white;
+    color: black;
+    margin-right: -159px;
+    cursor: pointer;
 }

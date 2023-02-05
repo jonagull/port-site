@@ -1,0 +1,29 @@
+.about__wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.about__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about__container p {
+    width: 400px;
+}
+
+.about__container img {
+    width: 300px;
+    border-radius: 50%;
+}
+
+.tech__wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.tech__wrapper h1 {
+    letter-spacing: 10px;
+}

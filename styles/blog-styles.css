@@ -1,6 +1,5 @@
 #toc_container {
     margin-left: 10%;
-    background: #fe5942 none repeat scroll 0 0;
     border: 1px solid white;
     display: table;
     font-size: 95%;
@@ -20,6 +19,11 @@
     list-style: none;
 }
 
+#toc_container a {
+    color: inherit;
+    list-style: none;
+}
+
 article {
     display: flex;
     justify-content: center;
@@ -32,7 +36,7 @@ article {
 }
 
 .article__wrapper {
-    width: 40%;
+    width: 30%;
     display: flex;
     align-items: center;
     justify-content: center;

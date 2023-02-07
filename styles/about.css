@@ -19,6 +19,17 @@
     border-radius: 50%;
 }
 
+.spotify__wrapper {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.spotify__wrapper iframe {
+    width: 30%;
+    margin-left: 10%;
+    height: 600px;
+}
+
 .tech__wrapper {
     display: flex;
     justify-content: center;

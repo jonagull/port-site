@@ -14,6 +14,7 @@ for (var i = 0; i < projects.length; i++) {
                 <div class="card__background"
                     style="background-image: url(${projects[i].image})">
                 </div>
+
                 <div class="card__content">
                     <p class="card__category">${projects[i].title}</p>
                     <h3 class="card__heading">${projects[i].description}</h3>

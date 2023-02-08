@@ -43,3 +43,7 @@ article {
     flex-direction: column;
     font-family: "Menlo";
 }
+
+.article__wrapper p {
+    line-height: 24px;
+}

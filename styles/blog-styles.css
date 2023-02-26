@@ -1,3 +1,18 @@
+html {
+    background-color: #1d1f21;
+    color: #c9cacc;
+    font-weight: 400;
+    font-size: 14px;
+    font-family: Menlo, "Meslo LG", monospace;
+    line-height: 1.725;
+    text-rendering: geometricPrecision;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1 {
+    color: #2bbc8a;
+}
+
 #toc_container {
     margin-left: 10%;
     border: 1px solid white;

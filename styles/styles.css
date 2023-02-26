@@ -1,5 +1,6 @@
 html {
-    background-color: #024889;
+    /* background-color: #024889; */
+    background-color: #1d1f21;
     color: white;
     font-family: "Roboto", sans-serif;
 }
@@ -49,7 +50,8 @@ hr {
 }
 
 .hero__container h5 {
-    color: #ffc45e;
+    color: #2bbc8a;
+    /* color: #ffc45e; */
     margin-left: 122px;
     margin-bottom: 20px;
     letter-spacing: 8px;
@@ -72,7 +74,8 @@ hr {
 }
 
 .hero__image img {
-    width: 630px;
+    margin-top: 61px;
+    width: 500px;
     height: auto;
 }
 
@@ -85,4 +88,28 @@ hr {
     color: black;
     margin-right: -159px;
     cursor: pointer;
+}
+
+.hover-underline-animation {
+    display: inline-block;
+    position: relative;
+    color: #2bbc8a;
+}
+
+.hover-underline-animation::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #2bbc8a;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
 }

@@ -1,6 +1,9 @@
 .project__title {
-    margin-left: 10%;
+    margin-top: 50px;
     letter-spacing: 20px;
+    color: #2bbc8a;
+    display: flex;
+    justify-content: center;
 }
 
 .project-parent__wrapper {

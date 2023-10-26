@@ -8,6 +8,7 @@ for (var i = 0; i < projects.length; i++) {
 
     if (projects[i].link) {
         projectContainer.setAttribute("href", projects[i].link);
+        projectContainer.setAttribute("target", "_blank");
     }
 
     projectContainer.innerHTML = `

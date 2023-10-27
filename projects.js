@@ -14,7 +14,7 @@ export const projects = [
     {
         title: "Billy",
         description: "",
-        image: "./assets/billy1.png",
+        image: "./assets/billy.png",
         link: "https://billypool.no",
     },
     {

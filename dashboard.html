@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Explore - Jonathan Gulliksen</title>
+    <meta name="description" content="Explore all pages and sections of Jonathan Gulliksen's portfolio">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="stylesheet" href="./styles/button-animation.css">
+    <link rel="stylesheet" href="./styles/dashboard-styles.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="nav-bar__wrapper">
+            <a href="./index.html" class="hover-underline-animation">Home</a>
+            <a href="./index.html#projects-parent" class="hover-underline-animation">Projects</a>
+            <a href="./about.html" class="hover-underline-animation">About</a>
+            <a href="./meditation.html" class="hover-underline-animation">Meditation</a>
+        </div>
+    </header>
+
+    <main class="dashboard-main">
+        <div class="dashboard-hero">
+            <h1 class="dashboard-title fade-in">EXPLORE</h1>
+            <p class="dashboard-subtitle fade-in-delay">Discover everything I have to offer</p>
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="dashboard-card fade-in-up" data-delay="0.2">
+                <div class="card-content">
+                    <div class="card-icon">🏠</div>
+                    <h3>Home</h3>
+                    <p>Return to the main portfolio page</p>
+                    <a href="./index.html" class="dashboard-btn">Visit Home</a>
+                </div>
+            </div>
+
+            <div class="dashboard-card fade-in-up" data-delay="0.4">
+                <div class="card-content">
+                    <div class="card-icon">👨‍💻</div>
+                    <h3>About</h3>
+                    <p>Learn more about me and my journey</p>
+                    <a href="./about.html" class="dashboard-btn">Read About</a>
+                </div>
+            </div>
+
+            <div class="dashboard-card fade-in-up" data-delay="0.6">
+                <div class="card-content">
+                    <div class="card-icon">🧘</div>
+                    <h3>Meditation</h3>
+                    <p>Explore my meditation and mindfulness content</p>
+                    <a href="./meditation.html" class="dashboard-btn">Start Meditating</a>
+                </div>
+            </div>
+
+            <div class="dashboard-card fade-in-up" data-delay="0.8">
+                <div class="card-content">
+                    <div class="card-icon">📝</div>
+                    <h3>Blog</h3>
+                    <p>Read my thoughts and insights</p>
+                    <a href="./blog.html" class="dashboard-btn">Read Blog</a>
+                </div>
+            </div>
+
+            <div class="dashboard-card fade-in-up" data-delay="1.0">
+                <div class="card-content">
+                    <div class="card-icon">💼</div>
+                    <h3>Projects</h3>
+                    <p>View my latest work and projects</p>
+                    <a href="./index.html#projects-parent" class="dashboard-btn">View Projects</a>
+                </div>
+            </div>
+
+            <div class="dashboard-card fade-in-up" data-delay="1.2">
+                <div class="card-content">
+                    <div class="card-icon">📧</div>
+                    <h3>Contact</h3>
+                    <p>Get in touch with me</p>
+                    <a href="mailto:jonathangullik@gmail.com" class="dashboard-btn">Send Email</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Add animation classes with delays
+        document.addEventListener('DOMContentLoaded', function () {
+            const cards = document.querySelectorAll('.dashboard-card');
+            cards.forEach(card => {
+                const delay = card.getAttribute('data-delay');
+                card.style.animationDelay = delay + 's';
+            });
+        });
+    </script>
+</body>
+
+</html>

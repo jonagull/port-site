@@ -75,6 +75,22 @@ hr {
     width: 300px;
 }
 
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.text-box {
+    display: inline-block;
+}
+
+.explore-box {
+    margin-left: 0;
+}
+
 .hero__image {
     width: 50%;
     height: 600px;

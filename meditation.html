@@ -272,15 +272,15 @@
                 // Load breath cue sounds
                 this.audioElements.inhale = new Audio('./assets/sounds/inhale.mp3');
                 this.audioElements.exhale = new Audio('./assets/sounds/exhale.mp3');
-                
+
                 // Load ambient sounds
                 this.audioElements.nature = new Audio('./assets/sounds/nature-ambient.mp3');
                 this.audioElements.ambient = new Audio('./assets/sounds/meditation-music.mp3');
-                
+
                 // Set volume for breath cues
                 this.audioElements.inhale.volume = 0.3;
                 this.audioElements.exhale.volume = 0.3;
-                
+
                 // Set ambient sounds to loop
                 this.audioElements.nature.loop = true;
                 this.audioElements.ambient.loop = true;
@@ -425,7 +425,7 @@
             playNatureSounds() {
                 this.stopAudio();
                 this.setActiveSoundButton(this.natureBtn);
-                
+
                 if (this.audioElements && this.audioElements.nature) {
                     try {
                         this.audioElements.nature.play();
@@ -441,7 +441,7 @@
             playAmbientMusic() {
                 this.stopAudio();
                 this.setActiveSoundButton(this.ambientBtn);
-                
+
                 if (this.audioElements && this.audioElements.ambient) {
                     try {
                         this.audioElements.ambient.play();
@@ -492,9 +492,9 @@
                 activeBtn.classList.add('active');
             }
 
-                        playBreathCue(phase) {
+            playBreathCue(phase) {
                 if (!this.breathCuesEnabled) return;
-                
+
                 // Try to play custom audio file first, fall back to generated tone
                 if (this.audioElements && this.audioElements[phase]) {
                     try {
@@ -510,25 +510,25 @@
 
             playGeneratedTone(phase) {
                 if (!this.audioContext) return;
-                
+
                 const cueOscillator = this.audioContext.createOscillator();
                 const cueGain = this.audioContext.createGain();
-                
+
                 cueOscillator.connect(cueGain);
                 cueGain.connect(this.audioContext.destination);
-                
+
                 // Different frequencies for inhale vs exhale
                 const frequency = phase === 'inhale' ? 440 : 330; // A4 for inhale, E4 for exhale
                 const volume = 0.1;
                 const duration = 0.3;
-                
+
                 cueOscillator.frequency.setValueAtTime(frequency, this.audioContext.currentTime);
                 cueOscillator.type = 'sine';
-                
+
                 cueGain.gain.setValueAtTime(0, this.audioContext.currentTime);
                 cueGain.gain.linearRampToValueAtTime(volume, this.audioContext.currentTime + 0.05);
                 cueGain.gain.linearRampToValueAtTime(0, this.audioContext.currentTime + duration);
-                
+
                 cueOscillator.start();
                 cueOscillator.stop(this.audioContext.currentTime + duration);
             }

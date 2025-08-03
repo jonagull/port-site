@@ -6,12 +6,18 @@
     display: inline-block;
     border-radius: 100px;
     transition: all 0.2s;
-    position: absolute;
+    position: relative;
 }
 
 .btn:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn-explore:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(43, 188, 138, 0.3);
+    background: linear-gradient(45deg, #1a9b6a, #2bbc8a);
 }
 
 .btn:active {
@@ -22,6 +28,12 @@
 .btn-white {
     background-color: #fff;
     color: #777;
+}
+
+.btn-explore {
+    background: linear-gradient(45deg, #2bbc8a, #1a9b6a);
+    color: white;
+    border: 2px solid #2bbc8a;
 }
 
 .btn::after {
@@ -39,6 +51,10 @@
 
 .btn-white::after {
     background-color: #fff;
+}
+
+.btn-explore::after {
+    background: linear-gradient(45deg, #1a9b6a, #2bbc8a);
 }
 
 .btn:hover::after {

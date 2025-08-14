@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Portfolio site</title>
-    <meta name="description" content="">
+    <title>Blog - Portfolio site</title>
+    <meta name="description" content="Blog posts about programming, design, and technology">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -20,6 +20,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,900;1,100&display=swap"
         rel="stylesheet">
 
+    <!-- Marked.js for markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- Highlight.js for code syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
 </head>
 
 <body>
@@ -32,72 +37,44 @@
         </div>
     </header>
 
-    <main>
+    <main class="blog-main">
+        <!-- Blog Post List View -->
+        <div id="blog-list" class="blog-list">
+            <div class="blog-header">
+                <h1>Blog Posts</h1>
+                <p>Thoughts on programming, design, and technology</p>
+            </div>
+            <div id="posts-container" class="posts-container">
+                <!-- Posts will be loaded here dynamically -->
+            </div>
+        </div>
 
-        <aside>
-            <div id="toc_container">
-                <p class="toc_title">Contents</p>
-                <ul class="toc_list">
-                    <li><a href="#intro">Intro</a>
-                        <ul>
-                            <li><a href="#First_Sub_Point_1">1.1 First Sub Point 1</a></li>
-                            <li><a href="#First_Sub_Point_2">1.2 First Sub Point 2</a></li>
+        <!-- Individual Blog Post View -->
+        <div id="blog-post" class="blog-post" style="display: none;">
+            <div class="post-navigation">
+                <button id="back-to-list" class="back-button">← Back to Posts</button>
+            </div>
+
+            <div class="post-layout">
+                <aside class="toc-sidebar">
+                    <div id="toc_container" class="toc-container">
+                        <p class="toc_title">Table of Contents</p>
+                        <ul id="toc_list" class="toc_list">
+                            <!-- TOC will be generated dynamically -->
                         </ul>
-                    </li>
-                    <li><a href="#Second_Point_Header">2 Second Point Header</a></li>
-                    <li><a href="#Third_Point_Header">3 Third Point Header</a></li>
-                </ul>
+                    </div>
+                </aside>
+
+                <article class="post-content">
+                    <div id="post-container" class="post-container">
+                        <!-- Blog post content will be loaded here -->
+                    </div>
+                </article>
             </div>
-        </aside>
-
-        <article>
-            <div class="article__wrapper">
-                <div class="post__container">
-                    <h1 id="intro">Intro</h1>
-                    <p>Suscipit potenti parturient dictum lectus inceptos volutpat magnis hac mi tempor pellentesque
-                        praesent habitant placerat euismod curae ullamcorper proin platea sit magna aenean porta
-                        venenatis
-                        duis pulvinar gravida et at nec fames dis per egestas sollicitudin nunc semper cras sodales
-                        finibus
-                        aliquet posuere rutrum luctus mattis malesuada iaculis vel quam turpis sem molestie diam nostra
-                        enim
-                        suspendisse tincidunt hendrerit id ut facilisis massa tellus quisque a ligula faucibus velit
-                        purus
-                        fermentum vehicula auctor non maximus mollis porttitor rhoncus efficitur laoreet ex donec
-                        imperdiet
-                        sociosqu phasellus neque tempus natoque primis commodo pretium elit arcu nulla consequat
-                        dictumst
-                        justo tortor mauris eros
-                    </p>
-                </div>
-
-                <hr style="width: 100%">
-
-                <div class="post__container">
-                    <h1 id="about">About</h1>
-                    <p>Suscipit potenti parturient dictum lectus inceptos volutpat magnis hac mi tempor pellentesque
-                        praesent habitant placerat euismod curae ullamcorper proin platea sit magna aenean porta
-                        venenatis
-                        duis pulvinar gravida et at nec fames dis per egestas sollicitudin nunc semper cras sodales
-                        finibus
-                        aliquet posuere rutrum luctus mattis malesuada iaculis vel quam turpis sem molestie diam nostra
-                        enim
-                        suspendisse tincidunt hendrerit id ut facilisis massa tellus quisque a ligula faucibus velit
-                        purus
-                        fermentum vehicula auctor non maximus mollis porttitor rhoncus efficitur laoreet ex donec
-                        imperdiet
-                        sociosqu phasellus neque tempus natoque primis commodo pretium elit arcu nulla consequat
-                        dictumst
-                        justo tortor mauris eros
-                    </p>
-                </div>
-
-                <hr style="width: 100%">
-
-
-            </div>
-        </article>
+        </div>
     </main>
+
+    <script src="./blog.js"></script>
 </body>
 
 </html>

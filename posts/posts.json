@@ -1,0 +1,26 @@
+[
+    {
+        "slug": "getting-started-with-web-development",
+        "title": "Getting Started with Web Development",
+        "date": "2024-01-15",
+        "readTime": 8,
+        "excerpt": "A comprehensive guide for beginners who want to start their journey in web development. Learn the fundamentals of HTML, CSS, and JavaScript.",
+        "tags": ["web-development", "beginners", "html", "css", "javascript"]
+    },
+    {
+        "slug": "modern-css-techniques",
+        "title": "Modern CSS Techniques You Should Know",
+        "date": "2024-01-10",
+        "readTime": 12,
+        "excerpt": "Explore advanced CSS techniques including Grid, Flexbox, custom properties, and modern layout patterns that will make your websites more responsive and maintainable.",
+        "tags": ["css", "frontend", "responsive-design", "modern-web"]
+    },
+    {
+        "slug": "javascript-async-patterns",
+        "title": "JavaScript Async Patterns: From Callbacks to Async/Await",
+        "date": "2024-01-05",
+        "readTime": 15,
+        "excerpt": "Deep dive into JavaScript's asynchronous programming patterns. Understand callbacks, promises, and async/await with practical examples.",
+        "tags": ["javascript", "async", "programming", "es6"]
+    }
+]

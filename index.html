@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html class="no-js" lang="">
+<html class="no-js" lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Portfolio site</title>
-    <meta name="description" content="">
+    <title>Jonathan Gulliksen - Web Developer</title>
+    <meta name="description" content="Web developer specializing in modern web applications, design, and deployment">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <script type="module" src="./populateProjects.js"></script>
@@ -19,103 +19,191 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
 
     <script>
         const openEmailWindow = () => {
             window.open("mailto:jonathangullik@gmail.com", "_self");
         };
+
+        // Scroll indicator
+        window.addEventListener('scroll', () => {
+            const scrollIndicator = document.querySelector('.scroll-indicator::after');
+            const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            document.documentElement.style.setProperty('--scroll-width', scrolled + '%');
+        });
+
+        // Smooth scrolling for navigation links
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const href = link.getAttribute('href');
+                    if (href.startsWith('#')) {
+                        e.preventDefault();
+                        const target = document.querySelector(href);
+                        if (target) {
+                            target.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    }
+                });
+            });
+
+            // Add active class to current section
+            const sections = document.querySelectorAll('section');
+            const navItems = document.querySelectorAll('.nav-link');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (window.scrollY >= (sectionTop - 200)) {
+                        current = section.getAttribute('id') || '';
+                    }
+                });
+
+                navItems.forEach(item => {
+                    item.classList.remove('active');
+                    if (item.getAttribute('href') === `#${current}` ||
+                        (current === '' && item.getAttribute('href') === '#')) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+
+            // Add loading animation to elements
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('loaded');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.service-card, .card, .project-card').forEach(el => {
+                el.classList.add('loading');
+                observer.observe(el);
+            });
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.hero__wrapper::before');
+            if (parallax) {
+                const speed = scrolled * 0.5;
+                parallax.style.transform = `translateY(${speed}px)`;
+            }
+        });
     </script>
 </head>
 
 <body>
-    <header>
-        <div class="nav-bar__wrapper">
-            <a href="#" class="hover-underline-animation">Home</a>
-            <a href="#projects-parent" class="hover-underline-animation">Projects</a>
-            <a href="./about.html" class="hover-underline-animation">About</a>
-            <a href="./meditation.html" class="hover-underline-animation">Meditation</a>
-        </div>
-    </header>
-    <main>
+    <div class="scroll-indicator"></div>
 
-        <div class="hero__wrapper">
+    <header>
+        <nav class="nav-bar__wrapper">
+            <a href="#" class="nav-link active">Home</a>
+            <a href="#projects-parent" class="nav-link">Projects</a>
+            <a href="./about.html" class="nav-link">About</a>
+            <a href="./meditation.html" class="nav-link">Meditation</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero__wrapper" id="home">
             <div class="hero__container">
-                <h5>WEB DEVELOPER</h5>
-                <h1>JONATHAN <br> GULLIKSEN</h1>
-                <p>is my name, building and deploying web apps is my game</p>
+                <h5>Web Developer</h5>
+                <h1>Jonathan <br> Gulliksen</h1>
+                <p>Crafting digital experiences with passion and precision. From concept to deployment, I bring your
+                    ideas to life.</p>
                 <div class="hero-buttons">
                     <div class="text-box" onclick="openEmailWindow()">
-                        <a href="#" class="btn btn-white btn-animate">Contact</a>
+                        <a href="#" class="btn btn-white btn-animate">Get In Touch</a>
                     </div>
                     <div class="text-box explore-box">
-                        <a href="./dashboard.html" class="btn btn-explore btn-animate">Explore</a>
+                        <a href="./dashboard.html" class="btn btn-explore btn-animate">View Work</a>
                     </div>
                 </div>
             </div>
             <div class="hero__image">
-                <img src="./assets/programming-code.gif" alt="">
+                <img src="./assets/programming-code.gif" alt="Programming code animation">
             </div>
-        </div>
+        </section>
 
         <hr>
 
-        <div class="services-wrapper">
+        <section class="services-wrapper" id="services">
             <div class="container">
                 <div class="service-card">
                     <div class="face face1">
                         <div class="content">
-                            <img src="./assets/design.png">
+                            <img src="./assets/design.png" alt="Design icon">
                             <h3>Design</h3>
                         </div>
                     </div>
                     <div class="face face2">
                         <div class="content">
-                            <p>I will design and make your ideas come to life! I love to destructure your thoughts and
-                                ideas, so I can bring them to life!</p>
+                            <p>I transform your ideas into beautiful, functional designs. Let me bring your vision to
+                                life with creativity and attention to detail.</p>
+                            <a href="#contact">Learn More</a>
                         </div>
                     </div>
                 </div>
                 <div class="service-card">
                     <div class="face face1">
                         <div class="content">
-                            <img src="./assets/code.png">
-                            <h3>Code</h3>
+                            <img src="./assets/code.png" alt="Code icon">
+                            <h3>Development</h3>
                         </div>
                     </div>
                     <div class="face face2">
                         <div class="content">
-                            <p>If you already have an idea that is crystal clear, I can build it for you. It's better to
-                                know the landing strip you landing the plane on</p>
+                            <p>From concept to code, I build robust and scalable web applications using modern
+                                technologies and best practices.</p>
+                            <a href="#contact">Learn More</a>
                         </div>
                     </div>
                 </div>
                 <div class="service-card">
                     <div class="face face1">
                         <div class="content">
-                            <img src="./assets/deploy.png">
-                            <h3>Launch</h3>
+                            <img src="./assets/deploy.png" alt="Deploy icon">
+                            <h3>Deployment</h3>
                         </div>
                     </div>
                     <div class="face face2">
                         <div class="content">
-                            <p>Making a project or application available to our fellow mankind is not easy. But no
-                                worries! This is something I can easily fix for you. Let me take care of it and you'll
-                                never have to worry about it again!</p>
+                            <p>I handle the entire deployment process, ensuring your application is live, secure, and
+                                performing optimally for your users.</p>
+                            <a href="#contact">Learn More</a>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
         <hr>
 
-        <h1 class="project__title">PROJECTS</h1>
-        <section class="hero-section">
-            <div id="projects-parent" class="card-grid"> </div>
+        <section class="projects-section" id="projects">
+            <h2 class="project__title">Featured Projects</h2>
+            <div class="project-parent__wrapper">
+                <div class="projects-grid" id="projects-grid">
+                    <!-- Projects will be dynamically populated here -->
+                </div>
+            </div>
         </section>
-
     </main>
 </body>
 

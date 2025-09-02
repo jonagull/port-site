@@ -791,6 +791,18 @@
                     this.startGuidedSession();
                 });
 
+                document.getElementById('pauseGuided').addEventListener('click', () => {
+                    if (this.currentSession && this.currentSession instanceof GuidedSession) {
+                        this.currentSession.pause();
+                    }
+                });
+
+                document.getElementById('resetGuided').addEventListener('click', () => {
+                    if (this.currentSession && this.currentSession instanceof GuidedSession) {
+                        this.currentSession.reset();
+                    }
+                });
+
                 // Non-guided meditation events
                 document.querySelectorAll('.timer-option').forEach(option => {
                     option.addEventListener('click', (e) => {
@@ -804,17 +816,33 @@
                     this.startNonGuidedSession();
                 });
 
+                document.getElementById('pauseNonGuided').addEventListener('click', () => {
+                    if (this.currentSession && this.currentSession instanceof NonGuidedSession) {
+                        this.currentSession.pause();
+                    }
+                });
+
+                document.getElementById('resetNonGuided').addEventListener('click', () => {
+                    if (this.currentSession && this.currentSession instanceof NonGuidedSession) {
+                        this.currentSession.reset();
+                    }
+                });
+
                 // Breathing events
-                document.querySelectorAll('[data-duration]').forEach(btn => {
+                document.querySelectorAll('.setting-options [data-duration]').forEach(btn => {
+                    console.log('Binding duration button:', btn);
                     btn.addEventListener('click', (e) => {
+                        console.log('Duration button clicked:', e.target);
                         e.target.parentElement.querySelectorAll('.option-btn').forEach(opt => opt.classList.remove('active'));
                         e.target.classList.add('active');
                         this.updateBreathingTimer();
                     });
                 });
 
-                document.querySelectorAll('[data-ratio]').forEach(btn => {
+                document.querySelectorAll('.setting-options [data-ratio]').forEach(btn => {
+                    console.log('Binding ratio button:', btn);
                     btn.addEventListener('click', (e) => {
+                        console.log('Ratio button clicked:', e.target);
                         e.target.parentElement.querySelectorAll('.option-btn').forEach(opt => opt.classList.remove('active'));
                         e.target.classList.add('active');
                         this.updateBreathingRatio();
@@ -823,6 +851,18 @@
 
                 document.getElementById('startBreathing').addEventListener('click', () => {
                     this.startBreathingSession();
+                });
+
+                document.getElementById('pauseBreathing').addEventListener('click', () => {
+                    if (this.currentSession && this.currentSession instanceof CoherentBreathing) {
+                        this.currentSession.pause();
+                    }
+                });
+
+                document.getElementById('resetBreathing').addEventListener('click', () => {
+                    if (this.currentSession && this.currentSession instanceof CoherentBreathing) {
+                        this.currentSession.reset();
+                    }
                 });
 
                 // Sound controls
@@ -842,6 +882,10 @@
                 const sessionType = selectedSession.getAttribute('data-session');
                 this.currentSession = new GuidedSession(sessionType);
                 this.currentSession.start();
+
+                // Update button states
+                document.getElementById('startGuided').disabled = true;
+                document.getElementById('pauseGuided').disabled = false;
             }
 
             startNonGuidedSession() {
@@ -851,8 +895,8 @@
             }
 
             startBreathingSession() {
-                const duration = parseInt(document.querySelector('[data-duration].active').getAttribute('data-duration'));
-                const ratio = document.querySelector('[data-ratio].active').getAttribute('data-ratio');
+                const duration = parseInt(document.querySelector('.setting-options [data-duration].active').getAttribute('data-duration'));
+                const ratio = document.querySelector('.setting-options [data-ratio].active').getAttribute('data-ratio');
                 const [inhale, exhale] = ratio.split(':').map(Number);
 
                 this.currentSession = new CoherentBreathing(duration, inhale, exhale);
@@ -860,23 +904,35 @@
             }
 
             updateNonGuidedTimer() {
-                const duration = parseInt(document.querySelector('.timer-option.active').getAttribute('data-duration'));
+                const activeDuration = document.querySelector('.timer-option.active');
+                if (!activeDuration) {
+                    console.log('No active non-guided duration found');
+                    return;
+                }
+                const duration = parseInt(activeDuration.getAttribute('data-duration'));
                 const minutes = Math.floor(duration / 60);
                 const seconds = duration % 60;
                 document.getElementById('timerNonGuided').textContent =
                     `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                console.log(`Updated non-guided timer to ${minutes}:${seconds} (${duration}s)`);
             }
 
             updateBreathingTimer() {
-                const duration = parseInt(document.querySelector('[data-duration].active').getAttribute('data-duration'));
+                const activeDuration = document.querySelector('.setting-options [data-duration].active');
+                if (!activeDuration) {
+                    console.log('No active duration found');
+                    return;
+                }
+                const duration = parseInt(activeDuration.getAttribute('data-duration'));
                 const minutes = Math.floor(duration / 60);
                 const seconds = duration % 60;
                 document.getElementById('timerBreathing').textContent =
                     `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                console.log(`Updated breathing timer to ${minutes}:${seconds} (${duration}s)`);
             }
 
             updateBreathingRatio() {
-                const ratio = document.querySelector('[data-ratio].active').getAttribute('data-ratio');
+                const ratio = document.querySelector('.setting-options [data-ratio].active').getAttribute('data-ratio');
                 document.getElementById('currentRatio').textContent = ratio;
             }
 
@@ -953,6 +1009,22 @@
                 // Implementation for guided meditation
                 console.log(`Starting guided session: ${this.sessionType}`);
             }
+
+            pause() {
+                super.pause();
+                if (this.isPaused) {
+                    document.getElementById('pauseGuided').textContent = 'Resume';
+                } else {
+                    document.getElementById('pauseGuided').textContent = 'Pause';
+                }
+            }
+
+            reset() {
+                super.reset();
+                document.getElementById('startGuided').disabled = false;
+                document.getElementById('pauseGuided').disabled = true;
+                document.getElementById('pauseGuided').textContent = 'Pause';
+            }
         }
 
         class NonGuidedSession extends BaseSession {
@@ -966,14 +1038,6 @@
                 this.startBtn = document.getElementById('startNonGuided');
                 this.pauseBtn = document.getElementById('pauseNonGuided');
                 this.resetBtn = document.getElementById('resetNonGuided');
-
-                this.bindEvents();
-            }
-
-            bindEvents() {
-                this.startBtn.addEventListener('click', () => this.start());
-                this.pauseBtn.addEventListener('click', () => this.pause());
-                this.resetBtn.addEventListener('click', () => this.reset());
             }
 
             start() {
@@ -1063,14 +1127,6 @@
                 this.startBtn = document.getElementById('startBreathing');
                 this.pauseBtn = document.getElementById('pauseBreathing');
                 this.resetBtn = document.getElementById('resetBreathing');
-
-                this.bindEvents();
-            }
-
-            bindEvents() {
-                this.startBtn.addEventListener('click', () => this.start());
-                this.pauseBtn.addEventListener('click', () => this.pause());
-                this.resetBtn.addEventListener('click', () => this.reset());
             }
 
             start() {
@@ -1240,6 +1296,10 @@
                     item.classList.add('selected');
                 });
             });
+
+            // Initialize timers with default values
+            window.meditationApp.updateNonGuidedTimer();
+            window.meditationApp.updateBreathingTimer();
         });
     </script>
 </body>

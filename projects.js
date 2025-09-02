@@ -24,9 +24,9 @@ export const projects = [
         liveDemo: "https://sentrum-karateklubb.no/",
     },
     {
-        title: "Billy",
+        title: "Billyboard",
         description:
-            "Billy Pool website showcasing swimming pool services with modern design, contact forms, and service portfolio.",
+            "Billyboard is a platform for creating boards and logging games utilizing an elo algorithm to track player ratings.",
         image: "./assets/billy.png",
         link: "https://billyboard.io",
         featured: true,

@@ -4,30 +4,26 @@ function createProjectCard(project, index) {
     const cardClass = project.featured
         ? "project-card featured"
         : "project-card";
-
+    
     const techTags = project.tech
         .map((tech) => `<span class="tech-tag">${tech}</span>`)
         .join("");
 
     const liveDemoText =
         project.category === "Game" ? "Play Game" : "View Live";
-
-    const liveDemoClass =
-        project.liveDemo && project.liveDemo !== "#"
-            ? "project-btn primary"
-            : "project-btn primary disabled";
-
-    const githubClass =
-        project.github && project.github !== "#"
-            ? "project-btn"
-            : "project-btn disabled";
+    
+    const liveDemoClass = project.liveDemo && project.liveDemo !== "#"
+        ? "project-btn primary"
+        : "project-btn primary disabled";
+    
+    const githubClass = project.github && project.github !== "#"
+        ? "project-btn"
+        : "project-btn disabled";
 
     return `
-        <div class="${cardClass}">
+        <div class="${cardClass}" data-category="${project.category}">
             <div class="project-image">
-                <img src="${project.image}" alt="${
-        project.title
-    }" loading="lazy">
+                <img src="${project.image}" alt="${project.title}" loading="lazy">
                 <div class="project-overlay">
                     <div class="project-overlay-content">
                         <h4>${project.title}</h4>
@@ -92,7 +88,7 @@ function populateProjects() {
 
     // Add loading animation to project cards
     const projectCards = projectsGrid.querySelectorAll(".project-card");
-
+    
     projectCards.forEach((card, index) => {
         card.classList.add("loading");
 

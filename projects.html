@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Projects - Jonathan Gulliksen</title>
+    <meta name="description" content="Explore my portfolio of web development projects, from e-commerce platforms to creative portfolios">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <script type="module" src="./populateProjects.js"></script>
+
+    <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="stylesheet" href="./styles/button-animation.css">
+    <link rel="stylesheet" href="./styles/projects-style.css">
+    <link rel="stylesheet" href="./styles/projects-page.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <script>
+        const openEmailWindow = () => {
+            window.open("mailto:jonathangullik@gmail.com", "_self");
+        };
+
+        // Filter functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.project-card');
+            const projectsGrid = document.querySelector('.projects-grid');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    button.classList.add('active');
+
+                    const filter = button.getAttribute('data-filter');
+                    
+                    // Filter projects
+                    projectCards.forEach(card => {
+                        const category = card.getAttribute('data-category');
+                        if (filter === 'all' || category === filter) {
+                            card.style.display = 'block';
+                            card.classList.add('filtered-in');
+                        } else {
+                            card.style.display = 'none';
+                            card.classList.remove('filtered-in');
+                        }
+                    });
+
+                    // Animate filtered projects
+                    setTimeout(() => {
+                        const visibleCards = document.querySelectorAll('.project-card.filtered-in');
+                        visibleCards.forEach((card, index) => {
+                            card.style.animationDelay = `${index * 0.1}s`;
+                            card.classList.add('filtered-animation');
+                        });
+                    }, 100);
+                });
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const href = link.getAttribute('href');
+                    if (href.startsWith('#')) {
+                        e.preventDefault();
+                        const target = document.querySelector(href);
+                        if (target) {
+                            target.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    }
+                });
+            });
+
+            // Add active class to current section
+            const sections = document.querySelectorAll('section');
+            const navItems = document.querySelectorAll('.nav-link');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (window.scrollY >= (sectionTop - 200)) {
+                        current = section.getAttribute('id') || '';
+                    }
+                });
+
+                navItems.forEach(item => {
+                    item.classList.remove('active');
+                    if (item.getAttribute('href') === `#${current}` ||
+                        (current === '' && item.getAttribute('href') === '#')) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <header>
+        <nav class="nav-bar__wrapper">
+            <a href="./index.html" class="nav-link">Home</a>
+            <a href="#projects" class="nav-link active">Projects</a>
+            <a href="./about.html" class="nav-link">About</a>
+            <a href="./blog.html" class="nav-link">Blog</a>
+            <a href="./meditation.html" class="nav-link">Meditation</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="projects-hero">
+            <div class="hero-content">
+                <h1>My Projects</h1>
+                <p>A collection of web development projects showcasing my skills in design, development, and deployment.</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">8</span>
+                        <span class="stat-label">Projects</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">5</span>
+                        <span class="stat-label">Categories</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Quality</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="projects-section" id="projects">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Featured Projects</h2>
+                    <p>Explore my latest work and creative solutions</p>
+                </div>
+
+                <div class="filter-container">
+                    <button class="filter-btn active" data-filter="all">All Projects</button>
+                    <button class="filter-btn" data-filter="E-Commerce">E-Commerce</button>
+                    <button class="filter-btn" data-filter="Business Website">Business</button>
+                    <button class="filter-btn" data-filter="Service Website">Services</button>
+                    <button class="filter-btn" data-filter="Creative Portfolio">Creative</button>
+                    <button class="filter-btn" data-filter="Portfolio">Portfolio</button>
+                    <button class="filter-btn" data-filter="Mobile App">Mobile</button>
+                    <button class="filter-btn" data-filter="Backend API">Backend</button>
+                    <button class="filter-btn" data-filter="Data Visualization">Data</button>
+                </div>
+
+                <div class="project-parent__wrapper">
+                    <div class="projects-grid" id="projects-grid">
+                        <!-- Projects will be dynamically populated here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-content">
+                    <h3>Ready to Start Your Project?</h3>
+                    <p>Let's collaborate to bring your ideas to life with modern web technologies and creative design.</p>
+                    <div class="cta-buttons">
+                        <div class="text-box" onclick="openEmailWindow()">
+                            <a href="#" class="btn btn-white btn-animate">Get In Touch</a>
+                        </div>
+                        <div class="text-box explore-box">
+                            <a href="./about.html" class="btn btn-explore btn-animate">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Jonathan Gulliksen</h4>
+                    <p>Web Developer & Designer</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>jonathangullik@gmail.com</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow</h4>
+                    <div class="social-links">
+                        <a href="https://github.com/jonagull" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        <a href="https://linkedin.com/in/jonathangulliksen" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Jonathan Gulliksen. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

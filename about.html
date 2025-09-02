@@ -1,73 +1,410 @@
 <!DOCTYPE html>
-<html class="no-js" lang="">
+<html class="no-js" lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Portfolio site</title>
-    <meta name="description" content="">
+    <title>About - Jonathan Gulliksen</title>
+    <meta name="description"
+        content="Learn more about Jonathan Gulliksen, a passionate full stack developer with expertise in modern web technologies">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,900;1,100&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
 
     <link rel="stylesheet" href="./styles/styles.css">
-    <link rel="stylesheet" href="./styles/blog-styles.css">
     <link rel="stylesheet" href="./styles/about.css">
-
 </head>
 
 <body>
     <header>
-        <div class="nav-bar__wrapper">
-            <a href="./index.html">Home</a>
-            <a href="./index.html#projects-parent">Projects</a>
-            <a href="./blog.html">Blog</a>
-            <!-- <a href="./about.html">About</a> -->
-        </div>
+        <nav class="nav-bar__wrapper">
+            <a href="./index.html" class="nav-link">Home</a>
+            <a href="./projects.html" class="nav-link">Projects</a>
+            <a href="./about.html" class="nav-link active">About</a>
+            <a href="./blog.html" class="nav-link">Blog</a>
+            <a href="./meditation.html" class="nav-link">Meditation</a>
+        </nav>
     </header>
 
     <main>
-
-        <div class="about__wrapper">
-            <div class="about__container">
-                <div class="text__container">
-                    <h3>Blurry boi</h3>
-                    <p>
-                        Very programmer boi does different tech things very good on computer yes, no will not fix
-                        printer
-                    </p>
+        <!-- Hero Section -->
+        <section class="about-hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>About Me</h1>
+                    <p class="hero-subtitle">Passionate full stack developer crafting digital experiences with
+                        creativity and
+                        precision</p>
                 </div>
-                <div class="img__container">
-                    <img src="./assets/melol.jpeg" alt="">
+                <div class="hero-image">
+                    <img src="./assets/melol.jpeg" alt="Jonathan Gulliksen" class="profile-image">
                 </div>
             </div>
-        </div>
+        </section>
 
-        <hr>
+        <!-- Personal Story Section -->
+        <section class="personal-story">
+            <div class="container">
+                <div class="story-content">
+                    <h2>My Journey</h2>
+                    <p>I'm Jonathan Gulliksen, a dedicated full stack developer with a passion for creating beautiful,
+                        functional, and user-friendly websites. My journey in web development started with curiosity and
+                        has evolved into a deep love for crafting digital experiences that make a difference.</p>
 
+                    <p>I believe in the power of clean code, thoughtful design, and user-centered development. Every
+                        project I work on is an opportunity to learn, grow, and push the boundaries of what's possible
+                        on the web.</p>
 
+                    <div class="personal-stats">
+                        <div class="stat-item">
+                            <i class="fas fa-code"></i>
+                            <span class="stat-number">3+</span>
+                            <span class="stat-label">Years Experience</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-project-diagram"></i>
+                            <span class="stat-number">20+</span>
+                            <span class="stat-label">Projects Completed</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-users"></i>
+                            <span class="stat-number">15+</span>
+                            <span class="stat-label">Happy Clients</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
+        <!-- Skills Section -->
+        <section class="skills-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Technical Skills</h2>
+                    <p>Technologies and tools I use to bring ideas to life</p>
+                </div>
 
-        <!-- <div class="spotify__wrapper">
-            <iframe style="border-radius:12px"
-                src="https://open.spotify.com/embed/playlist/6wU53zMLWttebqWMEt9VA3?utm_source=generator" width="100%"
-                height="352" frameBorder="0" allowfullscreen=""
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">
-            </iframe>
-        </div> -->
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3><i class="fas fa-code"></i> Frontend Development</h3>
+                        <div class="skill-items">
+                            <div class="skill-item">
+                                <i class="fab fa-html5"></i>
+                                <span>HTML5</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-css3-alt"></i>
+                                <span>CSS3</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-js"></i>
+                                <span>JavaScript</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-react"></i>
+                                <span>React</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-vuejs"></i>
+                                <span>Vue.js</span>
+                            </div>
+                        </div>
+                    </div>
 
-        <div class="tech__wrapper">
-            <h1>Technologies</h1>
-        </div>
+                    <div class="skill-category">
+                        <h3><i class="fas fa-server"></i> Backend Development</h3>
+                        <div class="skill-items">
+                            <div class="skill-item">
+                                <i class="fab fa-node-js"></i>
+                                <span>Node.js</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-php"></i>
+                                <span>PHP</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-database"></i>
+                                <span>MySQL</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-database"></i>
+                                <span>MongoDB</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-fire"></i>
+                                <span>Firebase</span>
+                            </div>
+                        </div>
+                    </div>
 
+                    <div class="skill-category">
+                        <h3><i class="fas fa-tools"></i> Tools & Deployment</h3>
+                        <div class="skill-items">
+                            <div class="skill-item">
+                                <i class="fab fa-git-alt"></i>
+                                <span>Git</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-github"></i>
+                                <span>GitHub</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-cloud"></i>
+                                <span>AWS</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-rocket"></i>
+                                <span>Vercel</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-palette"></i>
+                                <span>Figma</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3><i class="fas fa-mobile-alt"></i> Mobile & Other</h3>
+                        <div class="skill-items">
+                            <div class="skill-item">
+                                <i class="fab fa-react"></i>
+                                <span>React Native</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-mobile"></i>
+                                <span>Progressive Web Apps</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-search"></i>
+                                <span>SEO Optimization</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-tachometer-alt"></i>
+                                <span>Performance Optimization</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Security Best Practices</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Work Philosophy Section -->
+        <section class="philosophy-section">
+            <div class="container">
+                <div class="philosophy-content">
+                    <h2>My Work Philosophy</h2>
+                    <div class="philosophy-grid">
+                        <div class="philosophy-item">
+                            <div class="philosophy-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <h3>Innovation</h3>
+                            <p>I constantly explore new technologies and approaches to deliver cutting-edge solutions
+                                that stand out in the digital landscape.</p>
+                        </div>
+                        <div class="philosophy-item">
+                            <div class="philosophy-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <h3>Passion</h3>
+                            <p>Every line of code I write is infused with passion and attention to detail, ensuring the
+                                highest quality in every project.</p>
+                        </div>
+                        <div class="philosophy-item">
+                            <div class="philosophy-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h3>User-First</h3>
+                            <p>I prioritize user experience above all else, creating intuitive interfaces that delight
+                                and engage users.</p>
+                        </div>
+                        <div class="philosophy-item">
+                            <div class="philosophy-icon">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <h3>Performance</h3>
+                            <p>I build fast, efficient applications that provide seamless experiences across all devices
+                                and platforms.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-content">
+                    <h3>Ready to Work Together?</h3>
+                    <p>Let's discuss your project and bring your vision to life with modern web technologies and
+                        creative design.</p>
+                    <div class="cta-buttons">
+                        <a href="mailto:jonathangullik@gmail.com" class="btn btn-primary">Get In Touch</a>
+                        <a href="./projects.html" class="btn btn-secondary">View My Work</a>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Jonathan Gulliksen</h4>
+                    <p>full stack developer & Designer</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>jonathangullik@gmail.com</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow</h4>
+                    <div class="social-links">
+                        <a href="https://github.com/jonagull" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        <a href="https://linkedin.com/in/jonathangulliksen" target="_blank"
+                            rel="noopener noreferrer">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Jonathan Gulliksen. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const href = link.getAttribute('href');
+                    if (href.startsWith('#')) {
+                        e.preventDefault();
+                        const target = document.querySelector(href);
+                        if (target) {
+                            target.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    }
+                });
+            });
+
+            // Add active class to current section
+            const sections = document.querySelectorAll('section');
+            const navItems = document.querySelectorAll('.nav-link');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (window.scrollY >= (sectionTop - 200)) {
+                        current = section.getAttribute('id') || '';
+                    }
+                });
+
+                navItems.forEach(item => {
+                    item.classList.remove('active');
+                    if (item.getAttribute('href') === `#${current}` ||
+                        (current === '' && item.getAttribute('href') === '#')) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+
+            // Intersection Observer for animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe elements for animation
+            document.querySelectorAll('.skill-category, .philosophy-item, .stat-item').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Skill items hover effect
+            document.querySelectorAll('.skill-item').forEach(item => {
+                item.addEventListener('mouseenter', () => {
+                    item.style.transform = 'translateX(8px)';
+                });
+
+                item.addEventListener('mouseleave', () => {
+                    item.style.transform = 'translateX(0)';
+                });
+            });
+
+            // Philosophy items hover effect
+            document.querySelectorAll('.philosophy-item').forEach(item => {
+                item.addEventListener('mouseenter', () => {
+                    const icon = item.querySelector('.philosophy-icon');
+                    icon.style.transform = 'scale(1.1) rotate(5deg)';
+                });
+
+                item.addEventListener('mouseleave', () => {
+                    const icon = item.querySelector('.philosophy-icon');
+                    icon.style.transform = 'scale(1) rotate(0deg)';
+                });
+            });
+
+            // Stats counter animation
+            const stats = document.querySelectorAll('.stat-number');
+            const statsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = entry.target;
+                        const finalValue = target.textContent;
+                        const isPlus = finalValue.includes('+');
+                        const numericValue = parseInt(finalValue.replace('+', ''));
+
+                        let current = 0;
+                        const increment = numericValue / 30;
+                        const timer = setInterval(() => {
+                            current += increment;
+                            if (current >= numericValue) {
+                                current = numericValue;
+                                clearInterval(timer);
+                            }
+                            target.textContent = Math.floor(current) + (isPlus ? '+' : '');
+                        }, 50);
+
+                        statsObserver.unobserve(target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            stats.forEach(stat => statsObserver.observe(stat));
+        });
+
+        // Email functionality
+        const openEmailWindow = () => {
+            window.open("mailto:jonathangullik@gmail.com", "_self");
+        };
+    </script>
 </body>
 
 </html>

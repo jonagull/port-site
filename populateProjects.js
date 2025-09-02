@@ -4,7 +4,6 @@ function createProjectCard(project, index) {
     const cardClass = project.featured
         ? "project-card featured"
         : "project-card";
-    const animationDelay = (index + 1) * 0.1;
 
     const techTags = project.tech
         .map((tech) => `<span class="tech-tag">${tech}</span>`)
@@ -12,19 +11,23 @@ function createProjectCard(project, index) {
 
     const liveDemoText =
         project.category === "Game" ? "Play Game" : "View Live";
+
     const liveDemoClass =
         project.liveDemo && project.liveDemo !== "#"
             ? "project-btn primary"
             : "project-btn primary disabled";
+
     const githubClass =
         project.github && project.github !== "#"
             ? "project-btn"
             : "project-btn disabled";
 
     return `
-        <div class="${cardClass}" style="animation-delay: ${animationDelay}s;">
+        <div class="${cardClass}">
             <div class="project-image">
-                <img src="${project.image}" alt="${project.title}">
+                <img src="${project.image}" alt="${
+        project.title
+    }" loading="lazy">
                 <div class="project-overlay">
                     <div class="project-overlay-content">
                         <h4>${project.title}</h4>
@@ -46,14 +49,16 @@ function createProjectCard(project, index) {
                     ${techTags}
                 </div>
                 <div class="project-actions">
-                    <a href="${
-                        project.liveDemo
-                    }" class="${liveDemoClass}" target="_blank" rel="noopener noreferrer">
+                    <a href="${project.liveDemo}" 
+                       class="${liveDemoClass}" 
+                       target="_blank" 
+                       rel="noopener noreferrer">
                         ${liveDemoText}
                     </a>
-                    <a href="${
-                        project.github
-                    }" class="${githubClass}" target="_blank" rel="noopener noreferrer">
+                    <a href="${project.github}" 
+                       class="${githubClass}" 
+                       target="_blank" 
+                       rel="noopener noreferrer">
                         Source Code
                     </a>
                 </div>
@@ -87,6 +92,7 @@ function populateProjects() {
 
     // Add loading animation to project cards
     const projectCards = projectsGrid.querySelectorAll(".project-card");
+
     projectCards.forEach((card, index) => {
         card.classList.add("loading");
 
@@ -97,7 +103,7 @@ function populateProjects() {
                     if (entry.isIntersecting) {
                         setTimeout(() => {
                             entry.target.classList.add("loaded");
-                        }, index * 100);
+                        }, index * 150);
                     }
                 });
             },

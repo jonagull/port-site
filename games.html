@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Games - Jonathan Gulliksen</title>
+    <meta name="description" content="Simple games and interactive experiences">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="stylesheet" href="./styles/button-animation.css">
+    <link rel="stylesheet" href="./styles/games-styles.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <script>
+        const openEmailWindow = () => {
+            window.open("mailto:jonathangullik@gmail.com", "_self");
+        };
+
+        // Smooth scrolling for navigation links
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const href = link.getAttribute('href');
+                    if (href.startsWith('#')) {
+                        e.preventDefault();
+                        const target = document.querySelector(href);
+                        if (target) {
+                            target.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    }
+                });
+            });
+
+            // Add active class to current section
+            const sections = document.querySelectorAll('section');
+            const navItems = document.querySelectorAll('.nav-link');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (window.scrollY >= (sectionTop - 200)) {
+                        current = section.getAttribute('id') || '';
+                    }
+                });
+
+                navItems.forEach(item => {
+                    item.classList.remove('active');
+                    if (item.getAttribute('href') === `#${current}` ||
+                        (current === '' && item.getAttribute('href') === '#')) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+
+            // Add loading animation to elements
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('loaded');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.game-card, .card').forEach(el => {
+                el.classList.add('loading');
+                observer.observe(el);
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <header>
+        <nav class="nav-bar__wrapper">
+            <a href="./index.html" class="nav-link">Home</a>
+            <a href="./projects.html" class="nav-link">Projects</a>
+            <a href="./about.html" class="nav-link">About</a>
+            <a href="./blog.html" class="nav-link">Blog</a>
+            <a href="./meditation.html" class="nav-link">Meditation</a>
+            <a href="./games.html" class="nav-link active">Games</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="games-wrapper" id="games">
+            <div class="container">
+                <h2 class="games__title">Available Games</h2>
+
+                <div class="game-card">
+                    <div class="game-content">
+                        <h3>Pong</h3>
+                        <p>Classic arcade game - control your paddle and keep the ball in play!</p>
+                        <div class="game-controls">
+                            <p><strong>Controls:</strong> Use W/S or ↑/↓ to move your paddle</p>
+                        </div>
+                        <button class="btn btn-explore btn-animate" onclick="startPong()">Play Pong</button>
+                    </div>
+                </div>
+
+                <div class="game-card">
+                    <div class="game-content">
+                        <h3>Coming Soon</h3>
+                        <p>More games are in development. Stay tuned for updates!</p>
+                        <button class="btn btn-white btn-animate" disabled>Coming Soon</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pong Game Modal -->
+        <div id="pongModal" class="game-modal">
+            <div class="game-modal-content">
+                <div class="game-modal-header">
+                    <h2>Pong</h2>
+                    <span class="close" onclick="closePong()">&times;</span>
+                </div>
+                <div class="game-container">
+                    <canvas id="pongCanvas" width="800" height="400"></canvas>
+                    <div class="game-info">
+                        <div class="score">
+                            <span id="playerScore">0</span> - <span id="computerScore">0</span>
+                        </div>
+                        <div class="game-status" id="gameStatus">Press SPACE to start</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="./games.js"></script>
+</body>
+
+</html>
